@@ -31,33 +31,32 @@
  * pecahan mata uang terdekat yang dapat digunakan adalah pecahan 20000,1000, 1000, 1000.
  */
 
-// Have No Idea for this :)
+// Have No Idea for this
+function findCurrencyDenom(hargaBarang, jumlahLembar) {
+  const pecahanRupiah = [1000, 2000, 5000, 10000, 20000, 50000, 100000]
+  const hasil = []
+  let pecahan = 0
+  do {
+    for (let i = 0; i < pecahanRupiah.length; i++) {
+      pecahan = pecahanRupiah[i]
+      const hasilbagi = Math.round(hargaBarang / pecahan)
+      if (
+        hasilbagi === 1 ||
+        (hasilbagi === jumlahLembar && hargaBarang >= pecahan)
+      ) {
+        hasil.push(pecahan)
+        hargaBarang -= pecahan
+        break
+      }
+    }
 
-// function findCurrencyDenom(hargaBarang, jumlahLembar) {
-//   const pecahanRupiah = [1000, 2000, 5000, 10000, 20000, 50000, 100000]
-//   const hasil = []
-//   let pecahan = 0
-//   do {
-//     for (let i = 0; i < pecahanRupiah.length; i++) {
-//       pecahan = pecahanRupiah[i]
-//       const hasilbagi = Math.round(hargaBarang / pecahan)
-//       if (
-//         hasilbagi === 1 ||
-//         (hasilbagi === jumlahLembar && hargaBarang >= pecahan)
-//       ) {
-//         hasil.push(pecahan)
-//         hargaBarang -= pecahan
-//         break
-//       }
-//     }
+    jumlahLembar--
+  } while (jumlahLembar >= 0)
 
-//     jumlahLembar--
-//   } while (jumlahLembar >= 0)
+  console.log(hasil)
+}
 
-//   console.log(hasil)
-// }
-
-// findCurrencyDenom(17000, 1)
-// findCurrencyDenom(23000, 4)
-// findCurrencyDenom(35000, 3)
+findCurrencyDenom(17000, 1)
+findCurrencyDenom(23000, 4)
+findCurrencyDenom(35000, 3)
 
